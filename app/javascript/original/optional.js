@@ -55,7 +55,7 @@ document.body
     }
     else return
 
-    // Remove 0 in start line on integer numbers
+    // remove 0 at the beginning of the line if the data type is integer
     let start_with_null_regex = /^0[1-9]/g
     if(start_with_null_regex.exec(screen.value)){
         screen.value = screen.value.split('').slice(1, screen.value.length).join('')
