@@ -62,3 +62,17 @@ document.body
     }
 })
 
+screen.addEventListener('dblclick', (e) => {
+    copyToClickBoard(screen)
+})
+screen.addEventListener('long-press', (e) => {
+    copyToClickBoard(screen)
+})
+
+function copyToClickBoard(area){
+    area.select();
+    area.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert(`${area.value} copied`);
+}
+
