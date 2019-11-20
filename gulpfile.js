@@ -6,10 +6,10 @@ const concat_css = require('gulp-concat-css');
 
 gulp.task('scss', () => {
     return gulp.src(
-        'app/stylesheet/scss'
+        'app/stylesheet/scss/*.scss'
     ).pipe(sass())
+    .pipe(concat_css('all.min.css'))
     .pipe(gulp.dest('app/stylesheet/css'))
-    .pipe()
     .pipe(browser_sync.reload({stream: true}))
 })
 gulp.task('html', () => {
@@ -18,12 +18,12 @@ gulp.task('html', () => {
 })
 gulp.task('js', () => {
     return gulp.src('app/javascript/original/**/*.js')
-            .pipe(uglify())
+            // .pipe(uglify())
             .pipe(gulp.dest('app/javascript/min'))
             .pipe(browser_sync.reload({stream: true}))
 })
 gulp.task('watch', () => {
-    gulp.watch('app/scss', gulp.parallel('scss'))
+    gulp.watch('app/stylesheet/scss/', gulp.parallel('scss'))
     gulp.watch('app/view/*.html', gulp.parallel('html'))
     gulp.watch('app/javascript/original', gulp.parallel('js'))
 })
