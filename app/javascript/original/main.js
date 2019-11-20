@@ -1,15 +1,19 @@
 const arrays = {}
 arrays.sum = (array) => {
-    return array.reduce((total, value) => {
-        return (total + value)
-    })
+    // return array.reduce((total, value) => {
+    //     return (total + value)
+    // })
+    let sum = 0
+    for(let i = 0; i < array.length; i++){
+        sum += array[i]
+    }
+    return sum
 }
 // Min
 arrays.min = (array) => {
     let min = array[0]
     for(let i = 0; i < array.length; i++){
-        let buffer = array[i]
-        min = (buffer < min) ? buffer : min
+        min = (array[i] < min) ? array[i] : min
     }
     return min
 }
@@ -17,8 +21,7 @@ arrays.min = (array) => {
 arrays.max = (array) => {
     let max = array[0]
     for(let i = 0; i < array.length; i++){
-        let buffer = array[i]
-        max = (buffer > max) ? buffer : max
+        max = (array[i] > max) ? array[i] : max
     }
     return max
 }
@@ -27,33 +30,21 @@ arrays.replace = {}
 arrays.replace.min = (array, value) => {
     let index = array.indexOf(arrays.min(array))
     array[index] = value
-    let raport = {
-        old: [arrays.min(array), index],
-        new: [value]
-    }
-    return raport
+    return array
 }
 arrays.replace.max = (array, value) => {
     let index = array.indexOf(arrays.max(array))
     array[index] = value
-    let raport = {
-        old: [arrays.max(array), index],
-        new: [value]
-    }
-    return raport
+    return array
 }
 // Function with callback in argument
-const func_with_callback = (object) => {
-    let data = {
-        key: [],
-        value: []
-    }
-    Object.entries(object).forEach(([key, value]) => {
-        data.key.push(key);
-        data.value.push(value)
-    })
-    return data
-}
+function func_with_callback(num) {
+    if (num <= 1) return 1;
+  
+    return func_with_callback(num - 1) + func_with_callback(num - 2);
+  }
+
+console.log(func_with_callback(2))
 // Function that replace all number dividing three with foo
 const mutches = {}
 mutches.find = (str1, str2) => {

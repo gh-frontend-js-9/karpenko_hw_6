@@ -1,6 +1,6 @@
 const sass = require("gulp-sass");
 const gulp = require("gulp");
-const uglify = require('gulp-uglify');
+const minify = require('gulp-minify');
 const browser_sync = require('browser-sync');
 const concat_css = require('gulp-concat-css');
 
@@ -18,7 +18,7 @@ gulp.task('html', () => {
 })
 gulp.task('js', () => {
     return gulp.src('app/javascript/original/**/*.js')
-            // .pipe(uglify())
+            .pipe(minify())
             .pipe(gulp.dest('app/javascript/min'))
             .pipe(browser_sync.reload({stream: true}))
 })
