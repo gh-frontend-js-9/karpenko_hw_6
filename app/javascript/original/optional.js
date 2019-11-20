@@ -25,7 +25,7 @@ document.body
                 break;
             case 'shilft-left':
                 screen.value = screen.value.split('').splice(0, screen.value.length-1).join('')
-                
+                s
                 break;
             case 'shift-right':
                 screen.value = screen.value.split('').splice(1, screen.value.length).join('')

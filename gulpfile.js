@@ -17,8 +17,14 @@ gulp.task('html', () => {
             .pipe(browser_sync.reload({stream: true}))
 })
 gulp.task('js', () => {
-    return gulp.src('app/javascript/original/**/*.js')
-            .pipe(minify())
+    return gulp.src('app/javascript/original/*.js')
+            .pipe(minify({
+                ext:{
+                    min:'.js'
+                },
+                exclude: ['tasks'],
+                ignoreFiles: ['.combo.js', '.js']
+            }))
             .pipe(gulp.dest('app/javascript/min'))
             .pipe(browser_sync.reload({stream: true}))
 })
@@ -37,4 +43,4 @@ gulp.task('browser-sync', () => {
         port: 3000
     })
 })
-gulp.task('run', gulp.parallel('scss', 'browser-sync', 'watch'))
+gulp.task('run', gulp.parallel('scss', 'browser-sync', 'watch', 'js'))
