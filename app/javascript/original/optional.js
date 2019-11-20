@@ -20,12 +20,9 @@ document.body
             case '8':
             case '9':
             case '.':
-                // methods.push(array, key)
-                console.log(resoult)
                 resoult += key
                 screen.value += key
                 break;
-            // remove elemens
             case 'shilft-left':
                 screen.value = screen.value.split('').splice(0, screen.value.length-1).join('')
                 
@@ -33,9 +30,9 @@ document.body
             case 'shift-right':
                 screen.value = screen.value.split('').splice(1, screen.value.length).join('')
                 break;
-            // Blich screen
             case 'C':
                 screen.value = ''
+                resoult = ''
                 break;
             // Operations
             case '+':
@@ -47,14 +44,11 @@ document.body
                     resoult += key
                     screen.value = ''
                 }
-                else return
-                console.log(resoult)
-                // screen.value = methods.substraction(array)
+                else return;
                 break;
-            // Is equal ?
             case '=':
-                console.log(resoult)
                 screen.value = eval(resoult)
+                break;
             default:
                 break;
         }
@@ -68,27 +62,3 @@ document.body
     }
 })
 
-const methods = {}
-methods.push = (array,number) => {
-    array.push(parseInt(number))
-}
-methods.addition = (array) => {
-    return array.reduce((total, value) => {
-        return (total + value)
-    })
-}
-methods.substraction = (array) => {
-    return array.reduce((total, value) => {
-        return (total - value)
-    })
-}
-methods.multiplication = (array) => {
-    return array.reduce((total, value) => {
-        return (total * value)
-    })
-}
-methods.devision = (array) => {
-    return array.reduce((total, value) => {
-        return (total / value)
-    })
-}
